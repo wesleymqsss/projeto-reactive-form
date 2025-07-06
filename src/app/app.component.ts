@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CountriesService } from './services/countries.service';
 import { StatesService } from './services/states.service';
 import { CitiesService } from './services/cities.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
   constructor(
     private readonly _countriesService: CountriesService,
     private readonly _statesService: StatesService,
-    private readonly _citiesService: CitiesService
+    private readonly _citiesService: CitiesService,
+    private readonly _userService: UserService
   ){}
 
   ngOnInit() {
@@ -35,7 +37,14 @@ export class AppComponent implements OnInit {
       next: (responseCities) => {
         console.log('Cities =>', responseCities)
       }
-    })   
+    });
+
+    this._userService.getUsers().subscribe({
+      next: (responseUser) => {
+        console.log('users =>', responseUser);
+      }
+    })
+
   }
 
   
