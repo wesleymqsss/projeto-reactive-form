@@ -15,13 +15,14 @@ import { take } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'projeto-reactive-forms';
   usersList: UsersListResponse = [];
+  currentTabIndex: number = 0;
 
   constructor(
     private readonly _countriesService: CountriesService,
     private readonly _statesService: StatesService,
     private readonly _citiesService: CitiesService,
     private readonly _userService: UserService,
-  ){}
+  ) { }
 
   ngOnInit() {
     // this._countriesService.getCountries().subscribe({
@@ -50,5 +51,5 @@ export class AppComponent implements OnInit {
 
   }
 
-  
+
 }
