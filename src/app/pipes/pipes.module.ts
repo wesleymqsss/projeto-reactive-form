@@ -5,6 +5,8 @@ import { MaritalStatusPipe } from './marital-status.pipe';
     declarations: [
     MaritalStatusPipe
   ],
-    exports: []
+    exports: [
+      MaritalStatusPipe
+    ]
 })
 export class PipesModule{}
