@@ -1,7 +1,10 @@
 import { NgModule } from "@angular/core";
+import { MaritalStatusPipe } from './marital-status.pipe';
 
 @NgModule({
-    declarations: [],
+    declarations: [
+    MaritalStatusPipe
+  ],
     exports: []
 })
 export class PipesModule{}
