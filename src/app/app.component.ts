@@ -15,7 +15,7 @@ import { take } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'projeto-reactive-forms';
   usersList: UsersListResponse = [];
-  currentTabIndex: number = 0;
+  currentTabIndex: number = 1;
 
   constructor(
     private readonly _countriesService: CountriesService,

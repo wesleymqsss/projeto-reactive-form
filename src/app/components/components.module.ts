@@ -5,12 +5,14 @@ import { UserListComponent } from './user-list/user-list.component';
 import { CommonModule } from "@angular/common";
 import { GeneralInformationsComponent } from './general-informations/general-informations.component';
 import { UserInfoItemComponent } from './user-info-item/user-info-item.component';
+import { ContactInformationsComponent } from './contact-informations/contact-informations.component';
 
 @NgModule({
     declarations: [
     UserListComponent,
     GeneralInformationsComponent,
-    UserInfoItemComponent
+    UserInfoItemComponent,
+    ContactInformationsComponent
   ],
     imports: [
         AngularMaterialModule,
@@ -20,7 +22,8 @@ import { UserInfoItemComponent } from './user-info-item/user-info-item.component
     exports: [
       UserListComponent,
       GeneralInformationsComponent,
-       UserInfoItemComponent
+       UserInfoItemComponent,
+       ContactInformationsComponent
     ]
 })
 
