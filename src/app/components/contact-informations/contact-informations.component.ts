@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IUser } from '../../interfaces/user/user.interface';
 
 @Component({
@@ -7,6 +7,8 @@ import { IUser } from '../../interfaces/user/user.interface';
   templateUrl: './contact-informations.component.html',
   styleUrl: './contact-informations.component.scss'
 })
-export class ContactInformationsComponent {
+export class ContactInformationsComponent{
+ 
   @Input({required: true}) user: IUser | undefined = {} as IUser;
+
 }
