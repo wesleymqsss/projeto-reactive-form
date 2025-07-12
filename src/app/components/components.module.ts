@@ -9,6 +9,8 @@ import { ContactInformationsComponent } from './contact-informations/contact-inf
 import { PhoneListComponent } from './contact-informations/components/phone-list/phone-list.component';
 import { AddressListComponent } from './contact-informations/components/address-list/address-list.component';
 import { DepedentsListComponent } from './depedents-list/depedents-list.component';
+import { ButtonsContainerComponent } from './buttons-container/buttons-container.component';
+import { UserInformationsContainerComponent } from './user-informations-container/user-informations-container.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DepedentsListComponent } from './depedents-list/depedents-list.componen
     ContactInformationsComponent,
     PhoneListComponent,
     AddressListComponent,
-    DepedentsListComponent
+    DepedentsListComponent,
+    ButtonsContainerComponent,
+    UserInformationsContainerComponent
   ],
   imports: [
     AngularMaterialModule,
@@ -30,7 +34,8 @@ import { DepedentsListComponent } from './depedents-list/depedents-list.componen
     GeneralInformationsComponent,
     UserInfoItemComponent,
     ContactInformationsComponent,
-    DepedentsListComponent
+    DepedentsListComponent,
+    ButtonsContainerComponent
   ]
 })
 

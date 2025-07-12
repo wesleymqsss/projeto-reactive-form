@@ -14,6 +14,7 @@ import { IUser } from './interfaces/user/user.interface';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
+  isInEditMode: boolean = false;
   userSelectedIndex: number | undefined;
   userSelected: IUser = {} as IUser;
   title = 'projeto-reactive-forms';
@@ -57,7 +58,7 @@ export class AppComponent implements OnInit {
   onUserSelected(userIndex: number) {
     const userFound = this.usersList[userIndex];
 
-    if(userFound){
+    if (userFound) {
       this.userSelectedIndex = userIndex;
       this.userSelected = structuredClone(userFound);
       this.currentTabIndex = 0;
@@ -65,4 +66,11 @@ export class AppComponent implements OnInit {
 
   }
 
+  onCancelButton() {
+    this.isInEditMode = false;
+  }
+
+  onEditButton() {
+    this.isInEditMode = true;
+  }
 }
