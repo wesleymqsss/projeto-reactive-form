@@ -8,27 +8,30 @@ import { UserInfoItemComponent } from './user-info-item/user-info-item.component
 import { ContactInformationsComponent } from './contact-informations/contact-informations.component';
 import { PhoneListComponent } from './contact-informations/components/phone-list/phone-list.component';
 import { AddressListComponent } from './contact-informations/components/address-list/address-list.component';
+import { DepedentsListComponent } from './depedents-list/depedents-list.component';
 
 @NgModule({
-    declarations: [
+  declarations: [
     UserListComponent,
     GeneralInformationsComponent,
     UserInfoItemComponent,
     ContactInformationsComponent,
     PhoneListComponent,
-    AddressListComponent
+    AddressListComponent,
+    DepedentsListComponent
   ],
-    imports: [
-        AngularMaterialModule,
-        PipesModule,
-        CommonModule
-    ],
-    exports: [
-      UserListComponent,
-      GeneralInformationsComponent,
-       UserInfoItemComponent,
-       ContactInformationsComponent
-    ]
+  imports: [
+    AngularMaterialModule,
+    PipesModule,
+    CommonModule
+  ],
+  exports: [
+    UserListComponent,
+    GeneralInformationsComponent,
+    UserInfoItemComponent,
+    ContactInformationsComponent,
+    DepedentsListComponent
+  ]
 })
 
-export class ComponentsModule{}
+export class ComponentsModule { }
