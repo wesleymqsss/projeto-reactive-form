@@ -2,7 +2,7 @@
   <mat-card>
     <mat-card-content>
       <app-user-list [usersList]="usersList" (onUserSelected)="onUserSelected($event)"></app-user-list>
-      <mat-tab-group [(selectedIndex)]="currentTabIndex">
+      <mat-tab-group *ngIf="userSelectedIndex !== undefined" [(selectedIndex)]="currentTabIndex">
         <mat-tab label="Geral" >
           <app-general-informations [user]="userSelected"></app-general-informations>
         </mat-tab>

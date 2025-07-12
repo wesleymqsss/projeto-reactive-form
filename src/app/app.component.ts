@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   userSelected: IUser = {} as IUser;
   title = 'projeto-reactive-forms';
   usersList: UsersListResponse = [];
-  currentTabIndex: number = 2;
+  currentTabIndex: number = 0;
 
   constructor(
     private readonly _countriesService: CountriesService,
@@ -60,8 +60,7 @@ export class AppComponent implements OnInit {
     if(userFound){
       this.userSelectedIndex = userIndex;
       this.userSelected = structuredClone(userFound);
-      console.log('=>'  ,this.userSelected)
-      console.log(userIndex);
+      this.currentTabIndex = 0;
     }
 
   }
