@@ -5,6 +5,7 @@ import { CitiesService } from './services/cities.service';
 import { UserService } from './services/user.service';
 import { UsersListResponse } from './types/users-list-response';
 import { take } from 'rxjs';
+import { IUser } from './interfaces/user/user.interface';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,8 @@ import { take } from 'rxjs';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
+  userSelectedIndex: number | undefined;
+  userSelected: IUser = {} as IUser;
   title = 'projeto-reactive-forms';
   usersList: UsersListResponse = [];
   currentTabIndex: number = 2;
@@ -51,5 +54,14 @@ export class AppComponent implements OnInit {
 
   }
 
+  onUserSelected(userIndex: number) {
+    const userFound = this.usersList[0];
+
+    if(userFound){
+      this.userSelectedIndex = userIndex;
+      this.userSelected = structuredClone(userFound);
+    }
+
+  }
 
 }
