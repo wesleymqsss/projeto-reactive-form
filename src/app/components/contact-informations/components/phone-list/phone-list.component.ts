@@ -28,7 +28,6 @@ export class PhoneListComponent implements OnChanges {
     
     Object.keys(PhoneTypeDescriptionMap).map(Number).forEach((phoneType: number) => {
       const phoneFound = this.userPhoneList?.find((userPhone: IPhone) => userPhone.type === phoneType);
-      console.log(phoneFound);
 
       this.phoneListToDisplay.push({
         type: PhoneTypeDescriptionMap[phoneType as PhoneTypeEnum],

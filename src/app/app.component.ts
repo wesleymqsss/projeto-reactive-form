@@ -55,11 +55,13 @@ export class AppComponent implements OnInit {
   }
 
   onUserSelected(userIndex: number) {
-    const userFound = this.usersList[0];
+    const userFound = this.usersList[userIndex];
 
     if(userFound){
       this.userSelectedIndex = userIndex;
       this.userSelected = structuredClone(userFound);
+      console.log('=>'  ,this.userSelected)
+      console.log(userIndex);
     }
 
   }

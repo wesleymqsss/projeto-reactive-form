@@ -14,6 +14,6 @@ export class UserListComponent {
 
   onUserSelected(i: number) {
     this.userSelectedIndex = i;
-    this.userSelectedEmitt.emit(i)
+    this.userSelectedEmitt.emit(i);
   }
 }
