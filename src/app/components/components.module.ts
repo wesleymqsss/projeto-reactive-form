@@ -35,7 +35,8 @@ import { UserInformationsContainerComponent } from './user-informations-containe
     UserInfoItemComponent,
     ContactInformationsComponent,
     DepedentsListComponent,
-    ButtonsContainerComponent
+    ButtonsContainerComponent,
+    UserInformationsContainerComponent
   ]
 })
 

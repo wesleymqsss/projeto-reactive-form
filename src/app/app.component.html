@@ -7,18 +7,10 @@
         (onEditButton)="onEditButton()" [isInEditMode]="isInEditMode">
       </app-buttons-container>
 
-      <mat-tab-group *ngIf="userSelectedIndex !== undefined" [(selectedIndex)]="currentTabIndex">
-        <mat-tab label="Geral">
-          <app-general-informations [user]="userSelected"></app-general-informations>
-        </mat-tab>
-        <mat-tab label="Contato">
-          <app-contact-informations [user]="userSelected"></app-contact-informations>
-        </mat-tab>
-        <mat-tab label="Dependente">
-          <app-depedents-list [dependentsList]="userSelected.dependentsList"></app-depedents-list>
-        </mat-tab>
+      <app-user-informations-container *ngIf="userSelectedIndex !== undefined" [userSelected]="userSelected" [isInEditMode]="isInEditMode">
 
-      </mat-tab-group>
+      </app-user-informations-container>
+    
     </mat-card-content>
   </mat-card>
 </div>
