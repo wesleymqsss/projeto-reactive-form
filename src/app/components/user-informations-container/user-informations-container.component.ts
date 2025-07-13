@@ -8,12 +8,12 @@ import { IUser } from '../../interfaces/user/user.interface';
   styleUrl: './user-informations-container.component.scss'
 })
 export class UserInformationsContainerComponent implements OnChanges{
-    currentTabIndex: number = 0;
+    currentTabIndex: number = 1;
     @Input({required: true}) userSelected: IUser = {} as IUser;
     @Input({ required : true}) isInEditMode: boolean = false;
 
     ngOnChanges(_: SimpleChanges) {
-      this.currentTabIndex = 0;
+      this.currentTabIndex = 1;
     }
 
 

@@ -12,6 +12,10 @@ import { DepedentsListComponent } from './depedents-list/depedents-list.componen
 import { ButtonsContainerComponent } from './buttons-container/buttons-container.component';
 import { UserInformationsContainerComponent } from './user-informations-container/user-informations-container.component';
 import { GeneralInformationsEditComponent } from './general-informations-edit/general-informations-edit.component';
+import { ContactInformationsEditComponent } from './contact-informations-edit/contact-informations-edit.component';
+import { PhoneListEditComponent } from './contact-informations-edit/components/phone-list-edit/phone-list-edit.component';
+import { AddressListEditComponent } from './contact-informations-edit/components/address-list-edit/address-list-edit.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { GeneralInformationsEditComponent } from './general-informations-edit/ge
     DepedentsListComponent,
     ButtonsContainerComponent,
     UserInformationsContainerComponent,
-    GeneralInformationsEditComponent
+    GeneralInformationsEditComponent,
+    ContactInformationsEditComponent,
+    PhoneListEditComponent,
+    AddressListEditComponent,
+ 
   ],
   imports: [
     AngularMaterialModule,
