@@ -11,6 +11,7 @@ import { AddressListComponent } from './contact-informations/components/address-
 import { DepedentsListComponent } from './depedents-list/depedents-list.component';
 import { ButtonsContainerComponent } from './buttons-container/buttons-container.component';
 import { UserInformationsContainerComponent } from './user-informations-container/user-informations-container.component';
+import { GeneralInformationsEditComponent } from './general-informations-edit/general-informations-edit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UserInformationsContainerComponent } from './user-informations-containe
     AddressListComponent,
     DepedentsListComponent,
     ButtonsContainerComponent,
-    UserInformationsContainerComponent
+    UserInformationsContainerComponent,
+    GeneralInformationsEditComponent
   ],
   imports: [
     AngularMaterialModule,
