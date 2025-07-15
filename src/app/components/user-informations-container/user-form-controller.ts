@@ -1,26 +1,101 @@
 import { inject } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Form, FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { IUser } from "../../interfaces/user/user.interface";
+import { PhoneList } from "../../types/phone-list";
+import { AddressList } from "../../types/address-list";
+import { DependentsList } from "../../types/dependents-list";
 
 export class UserFormController {
     userForm!: FormGroup;
 
     private _fb = inject(FormBuilder);
-    constructor(){
+    constructor() {
         this.createUserForm()
     }
 
-    get generalInformations(): FormGroup{
+    get generalInformations(): FormGroup {
         return this.userForm.get('generalInformations') as FormGroup;
     }
 
-    fulfillUserForm(user: IUser){
-        this.fulfillGeneralInformations(user);
+    get phoneList(): FormArray {
+        return this.userForm.get('contactInformations.phoneList') as FormArray;
     }
 
-    private fulfillGeneralInformations(user: IUser){
-        this.generalInformations?.patchValue(user);
+    get addressList(): FormArray {
+        return this.userForm.get('contactInformations.addressList') as FormArray;
+    }
+
+    get dependentsList(): FormArray {
+        return this.userForm.get('dependentsList') as FormArray;
+    }
+
+    fulfillUserForm(user: IUser) {
+        this.resetUserForm();
+        
+        this.fulfillGeneralInformations(user);
+
+        this.fulfillPhoneList(user.phoneList);
+
+        this.fulfillAddressList(user.addressList);
+
+        this.fulfillDependentsList(user.dependentsList);
+
         console.log(this.userForm);
+    }
+
+    private resetUserForm() {
+        this.userForm.reset();
+
+        this.generalInformations.reset();
+
+        this.phoneList.reset();
+        this.phoneList.clear();
+
+        this.addressList.reset();
+        this.addressList.clear();
+
+        this.dependentsList.reset();
+        this.dependentsList.clear();
+
+    }
+
+    private fulfillGeneralInformations(user: IUser) {
+        this.generalInformations?.patchValue(user);
+    }
+
+    private fulfillPhoneList(userPhoneList: PhoneList) {
+        userPhoneList.forEach((phone) => {
+            this.phoneList.push(this._fb.group({
+                type: [phone.type, Validators.required],
+                areaCode: [phone.areaCode, Validators.required],
+                internationalCode: [phone.internationalCode, Validators.required],
+                number: [phone.number, Validators.required],
+            }));
+        });
+    }
+
+    private fulfillAddressList(addressList: AddressList) {
+        addressList.forEach((address) => {
+            this.addressList.push(this._fb.group({
+                type: [address.type, Validators.required],
+                street: [address.street, Validators.required],
+                complement: [address.complement, Validators.required],
+                country: [address.country, Validators.required],
+                state: [address.state, Validators.required],
+                city: [address.city, Validators.required],
+            }));
+        });
+    }
+
+
+    private fulfillDependentsList(userDependentsList: DependentsList) {
+        userDependentsList.forEach((dependents) => {
+            this.dependentsList.push(this._fb.group({
+                name: [dependents.name, Validators.required],
+                age: [dependents.age, Validators.required],
+                document: [dependents.document, Validators.required],
+            }));
+        })
     }
 
     private createUserForm() {
