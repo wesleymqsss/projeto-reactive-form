@@ -4,10 +4,13 @@
             <mat-form-field class="w-full">
                 <mat-label>Nome</mat-label>
                 <input matInput placeholder="Funalo da Silva" formControlName="name">
+                <mat-error>O nome é obrigatorio.</mat-error>
             </mat-form-field>
             <mat-form-field class="w-full">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Funalo@hotmail.com" formControlName="email">
+                <mat-error *ngIf="emailControl.hasError('required')">O email é obrigatorio.</mat-error>
+                <mat-error *ngIf="emailControl.hasError('pattern')" >O email é invalido.</mat-error>
             </mat-form-field>
         </div>
         <div class="grid lg:grid-cols-3 gap-4">
