@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 import { AngularMaterialModule } from "../angular-material/angular-material.module";
 import { PipesModule } from "../pipes/pipes.module";
 import { UserListComponent } from './user-list/user-list.component';
@@ -16,6 +17,7 @@ import { ContactInformationsEditComponent } from './contact-informations-edit/co
 import { PhoneListEditComponent } from './contact-informations-edit/components/phone-list-edit/phone-list-edit.component';
 import { AddressListEditComponent } from './contact-informations-edit/components/address-list-edit/address-list-edit.component';
 import { DependentsListEditComponent } from './dependents-list-edit/dependents-list-edit.component';
+
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { DependentsListEditComponent } from './dependents-list-edit/dependents-l
   imports: [
     AngularMaterialModule,
     PipesModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
     UserListComponent,

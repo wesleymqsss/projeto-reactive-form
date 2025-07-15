@@ -12,7 +12,7 @@ export class UserInformationsContainerComponent extends UserFormController imple
     currentTabIndex: number = 0;
     @Input({required: true}) userSelected: IUser = {} as IUser;
     @Input({ required : true}) isInEditMode: boolean = false;
-
+    
     ngOnChanges(changes: SimpleChanges) {
       this.currentTabIndex = 1;
 
