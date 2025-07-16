@@ -38,6 +38,7 @@ export class UserInformationsContainerComponent extends UserFormController imple
     this._countriesService.getCountries().pipe(take(1)).subscribe({
       next: (countriesList: CountriesList) => {
         this.countriesList = countriesList;
+        console.log(countriesList)
       }
     });
   }
