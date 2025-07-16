@@ -1,7 +1,8 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CountriesList } from '../../types/countries-list';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { StateList } from '../../types/states-list';
 
 @Component({
   selector: 'app-general-informations-edit',
@@ -10,18 +11,24 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
   styleUrl: './general-informations-edit.component.scss'
 })
 export class GeneralInformationsEditComponent implements OnChanges, OnInit {
+  countryListFiltered: CountriesList = [];
+  statesListFiltered: StateList = [];
+
   @Input({ required: true }) userForm!: FormGroup;
   @Input({ required: true }) countriesList: CountriesList = [];
-  countryListFiltered: CountriesList = [];
+  @Input({ required: true }) statesList: StateList = [];
+
+  @Output('onCountrySelected') onCoutrySelectedEmitt = new EventEmitter<string>();
 
   ngOnInit() {
 
     this.watchCountryFormChangesAndFilter();
+    this.watchStateFormChangesAndFilter();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes['countriesList'].currentValue);
-    this.countryListFiltered = this.countriesList;
+      this.countryListFiltered = this.countriesList;
+      this.statesListFiltered = this.statesList;
   }
 
   get emailControl(): FormControl {
@@ -32,8 +39,17 @@ export class GeneralInformationsEditComponent implements OnChanges, OnInit {
     return this.userForm.get('generalInformations.country') as FormControl;
   }
 
+  get stateControl(): FormControl {
+    return this.userForm.get('generalInformations.state') as FormControl;
+  }
+
   onCountrySelected(event: MatAutocompleteSelectedEvent) {
-    console.log(event.option.value);
+    this.onCoutrySelectedEmitt.emit(event.option.value);
+    console.log()
+  }
+
+  private watchStateFormChangesAndFilter() {
+    this.stateControl.valueChanges.subscribe(this.filterStateList.bind(this));
   }
 
   private watchCountryFormChangesAndFilter() {
@@ -51,4 +67,7 @@ export class GeneralInformationsEditComponent implements OnChanges, OnInit {
     );
   }
 
+  private filterStateList(searchTerm: any) {
+    this.statesListFiltered = this.statesList.filter((state) => state.name.toLowerCase().includes(searchTerm.toLowerCase().trim()));
+  }
 }

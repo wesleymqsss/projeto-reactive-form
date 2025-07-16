@@ -26,7 +26,7 @@
                 <mat-label>Estado</mat-label>
                 <input type="text" placeholder="Sao Paulo" matInput [matAutocomplete]="autoState" formControlName="state">
                 <mat-autocomplete autoActiveFirstOption #autoState="matAutocomplete">
-                    <mat-option *ngFor="let op of []">{{''}}</mat-option>
+                    <mat-option *ngFor="let state of statesListFiltered" [value]="state.name">{{state.name}}</mat-option>
                 </mat-autocomplete>
             </mat-form-field>
         </div>
