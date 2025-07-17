@@ -40,14 +40,14 @@ export class UserInformationsContainerComponent extends UserFormController imple
   }
 
   onCountrySelected(countryName: string) {
-   this.getStateList(countryName);
+    this.getStateList(countryName);
   }
 
   private getCountriesList() {
     this._countriesService.getCountries().pipe(take(1)).subscribe({
       next: (countriesList: CountriesList) => {
         this.countriesList = countriesList;
-       
+
       }
     });
   }
@@ -64,5 +64,7 @@ export class UserInformationsContainerComponent extends UserFormController imple
     })
   }
 
-
+  mostrarUserForm() {
+    console.log('form =>', this.userForm)
+  }
 }

@@ -51,13 +51,15 @@
                     thousandSeparator="."
                     decimalSeparator=","
                  >
+                 <mat-error>A renda mensal é obrigatória</mat-error>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Data de Nascimento:</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="birthDate">
+                <input matInput [matDatepicker]="picker" formControlName="birthDate" readonly>
                 <mat-hint>DD/MM/AAAA</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
+                <mat-error>A renda mensal é obrigatória</mat-error>
             </mat-form-field>
         </div>
     </ng-container>

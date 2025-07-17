@@ -4,6 +4,7 @@ import { IUser } from "../../interfaces/user/user.interface";
 import { PhoneList } from "../../types/phone-list";
 import { AddressList } from "../../types/address-list";
 import { DependentsList } from "../../types/dependents-list";
+import { convertPtBrDateToDateObj } from "../../utils/convert-pt-br-date-to-date-obj";
 
 export class UserFormController {
     userForm!: FormGroup;
@@ -62,7 +63,12 @@ export class UserFormController {
     }
 
     private fulfillGeneralInformations(user: IUser) {
-        this.generalInformations?.patchValue(user);
+        const newUser = {
+            ...user,
+            birthDate: convertPtBrDateToDateObj(user.birthDate)
+        };
+
+        this.generalInformations?.patchValue(newUser);
     }
 
     private fulfillPhoneList(userPhoneList: PhoneList) {
@@ -88,7 +94,6 @@ export class UserFormController {
             }));
         });
     }
-
 
     private fulfillDependentsList(userDependentsList: DependentsList) {
         userDependentsList.forEach((dependents) => {
