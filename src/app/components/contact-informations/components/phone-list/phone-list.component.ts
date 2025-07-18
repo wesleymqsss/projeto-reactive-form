@@ -25,17 +25,9 @@ export class PhoneListComponent implements OnChanges {
   preparePhoneListToDisplay() {
     this.phoneListToDisplay = [];
     const originalUserPhoneList = this.userPhoneList && this.userPhoneList.length > 0 ? this.userPhoneList : [];
-    preparePhoneList(originalUserPhoneList, (phone) => {
+    preparePhoneList(originalUserPhoneList, true, (phone) => {
       this.phoneListToDisplay.push(phone);
     });
-    // Object.keys(PhoneTypeDescriptionMap).map(Number).forEach((phoneType: number) => {
-    //   const phoneFound = this.userPhoneList?.find((userPhone: IPhone) => userPhone.type === phoneType);
-
-    //   this.phoneListToDisplay.push({
-    //     type: PhoneTypeDescriptionMap[phoneType as PhoneTypeEnum],
-    //     phoneNumber: phoneFound ? this.formatPhoneNumber(phoneFound) : '-',
-    //   });
-    // });
   }
 
   formatPhoneNumber(phone: IPhone) {
