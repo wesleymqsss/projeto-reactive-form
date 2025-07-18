@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-phone-list-edit',
@@ -8,5 +8,9 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrl: './phone-list-edit.component.scss'
 })
 export class PhoneListEditComponent{
+  @Input({required: true}) userForm!: FormGroup;
 
+  get phoneList(): FormArray{
+    return this.userForm.get('contactInformations.phoneList') as FormArray;
+  }
 }
