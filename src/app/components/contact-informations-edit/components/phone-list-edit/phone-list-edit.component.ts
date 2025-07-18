@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-phone-list-edit',
@@ -6,6 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './phone-list-edit.component.html',
   styleUrl: './phone-list-edit.component.scss'
 })
-export class PhoneListEditComponent {
+export class PhoneListEditComponent{
 
 }
