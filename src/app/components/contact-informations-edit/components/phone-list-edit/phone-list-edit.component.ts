@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { PhoneTypeEnum } from '../../../../enums/phone-type.enum';
 
 @Component({
   selector: 'app-phone-list-edit',
@@ -13,4 +14,5 @@ export class PhoneListEditComponent{
   get phoneList(): FormArray{
     return this.userForm.get('contactInformations.phoneList') as FormArray;
   }
+
 }
