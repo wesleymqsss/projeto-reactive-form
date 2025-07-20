@@ -10,6 +10,7 @@ import { PhoneTypeEnum } from "../../enums/phone-type.enum";
 import { prepareAdrressList } from "../../utils/prepare-address-list";
 import { state } from "@angular/animations";
 import { requiredAddressValidator } from "../../utils/user-form-validators/required-address-validators";
+import { IDependent } from "../../interfaces/user/dependent.interface";
 
 export class UserFormController {
     userForm!: FormGroup;
@@ -49,6 +50,32 @@ export class UserFormController {
         this.fulfillDependentsList(user.dependentsList);
 
         console.log(this.userForm);
+    }
+
+
+    removeDependent(index: number) {
+        this.dependentsList.removeAt(index);
+    }
+
+    addDependent() {
+        this.dependentsList.push(this.createDependentGroup());
+    }
+
+    private createDependentGroup(dependent: IDependent | null = null){
+        if(!dependent){
+            this._fb.group({
+                name: ['', Validators.required],
+                age: ['', Validators.required],
+                document: ['', Validators.required],
+            });
+        }
+
+        return this._fb.group({
+             name: [dependent?.name, Validators.required],
+                age: [dependent?.age, Validators.required],
+                document: [dependent?.document, Validators.required],
+        })
+
     }
 
     private resetUserForm() {
@@ -109,11 +136,7 @@ export class UserFormController {
 
     private fulfillDependentsList(userDependentsList: DependentsList) {
         userDependentsList.forEach((dependents) => {
-            this.dependentsList.push(this._fb.group({
-                name: [dependents.name, Validators.required],
-                age: [dependents.age, Validators.required],
-                document: [dependents.document, Validators.required],
-            }));
+            this.dependentsList.push(this.createDependentGroup(dependents));
         })
     }
 
@@ -135,4 +158,6 @@ export class UserFormController {
             dependentsList: this._fb.array([]),
         })
     }
+
+
 }

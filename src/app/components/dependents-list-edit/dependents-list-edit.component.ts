@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-dependents-list-edit',
@@ -8,4 +9,20 @@ import { Component } from '@angular/core';
 })
 export class DependentsListEditComponent {
 
+  @Input({ required: true }) userForm!: FormGroup;
+  @Output('onRemoveDependent') onRemoveDependeEmitt = new EventEmitter<number>();
+  @Output('onAddDependent') onAddDependeEmitt = new EventEmitter<void>();
+
+  get dependentsList(): FormArray {
+    return this.userForm.get('dependentsList') as FormArray;
+  }
+
+
+  removeDependent(index: number) {
+    this.onRemoveDependeEmitt.emit(index);
+  }
+
+  addDependent() {
+    this.onAddDependeEmitt.emit();
+  }
 }
