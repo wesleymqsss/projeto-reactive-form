@@ -9,6 +9,7 @@ import { preparePhoneList } from "../../utils/prepare-phone-list";
 import { PhoneTypeEnum } from "../../enums/phone-type.enum";
 import { prepareAdrressList } from "../../utils/prepare-address-list";
 import { state } from "@angular/animations";
+import { requiredAddressValidator } from "../../utils/user-form-validators/required-address-validators";
 
 export class UserFormController {
     userForm!: FormGroup;
@@ -100,6 +101,8 @@ export class UserFormController {
                 country: [address.country],
                 state: [address.state],
                 city: [address.city],
+            }, {
+                validators: requiredAddressValidator
             }));
         })
     }
