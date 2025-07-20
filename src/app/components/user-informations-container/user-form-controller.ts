@@ -7,6 +7,8 @@ import { DependentsList } from "../../types/dependents-list";
 import { convertPtBrDateToDateObj } from "../../utils/convert-pt-br-date-to-date-obj";
 import { preparePhoneList } from "../../utils/prepare-phone-list";
 import { PhoneTypeEnum } from "../../enums/phone-type.enum";
+import { prepareAdrressList } from "../../utils/prepare-address-list";
+import { state } from "@angular/animations";
 
 export class UserFormController {
     userForm!: FormGroup;
@@ -36,7 +38,7 @@ export class UserFormController {
 
     fulfillUserForm(user: IUser) {
         this.resetUserForm();
-        
+
         this.fulfillGeneralInformations(user);
 
         this.fulfillPhoneList(user.phoneList);
@@ -74,7 +76,7 @@ export class UserFormController {
     }
 
     private fulfillPhoneList(userPhoneList: PhoneList) {
-        preparePhoneList(userPhoneList, false,(phone) => {
+        preparePhoneList(userPhoneList, false, (phone) => {
             const phoneValidators = phone.type === PhoneTypeEnum.EMERGENCY ? [] : [Validators.required];
 
             this.phoneList.push(this._fb.group({
@@ -85,20 +87,21 @@ export class UserFormController {
         })
 
         console.log('form phoneList', this.phoneList.value)
-   
+
     }
 
-    private fulfillAddressList(addressList: AddressList) {
-        addressList.forEach((address) => {
+    private fulfillAddressList(userAddressList: AddressList) {
+        prepareAdrressList(userAddressList, false, (address) => {
             this.addressList.push(this._fb.group({
-                type: [address.type, Validators.required],
-                street: [address.street, Validators.required],
-                complement: [address.complement, Validators.required],
-                country: [address.country, Validators.required],
-                state: [address.state, Validators.required],
-                city: [address.city, Validators.required],
+                type: [address.type],
+                typeDescription: [{ value: address.typeDescription, disabled: true }],
+                street: [address.street],
+                complement: [address.complement],
+                country: [address.country],
+                state: [address.state],
+                city: [address.city],
             }));
-        });
+        })
     }
 
     private fulfillDependentsList(userDependentsList: DependentsList) {
