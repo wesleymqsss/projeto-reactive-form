@@ -21,6 +21,10 @@ export class UserFormController {
         this.createUserForm()
     }
 
+    get contactInformations(): FormGroup{
+        return this.userForm.get('contactInformations') as FormGroup;
+    }
+
     get generalInformations(): FormGroup {
         return this.userForm.get('generalInformations') as FormGroup;
     }
@@ -48,6 +52,10 @@ export class UserFormController {
 
         this.fulfillDependentsList(user.dependentsList);
 
+        this.userForm.markAllAsTouched();
+
+        this.userForm.updateValueAndValidity();
+        
         console.log(this.userForm);
     }
 
