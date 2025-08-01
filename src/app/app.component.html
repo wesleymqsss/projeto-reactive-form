@@ -3,11 +3,15 @@
     <mat-card-content>
       <app-user-list [isInEditMode]="isInEditMode" [usersList]="usersList" (onUserSelected)="onUserSelected($event)"></app-user-list>
 
-      <app-buttons-container *ngIf="userSelectedIndex !== undefined" (onCancelButton)="onCancelButton()"
-        (onEditButton)="onEditButton()" [isInEditMode]="isInEditMode">
+      <app-buttons-container 
+        *ngIf="userSelectedIndex !== undefined" 
+        (onCancelButton)="onCancelButton()"
+        (onEditButton)="onEditButton()"
+        [enableSaveButton]="enableSaveButton" 
+        [isInEditMode]="isInEditMode">
       </app-buttons-container>
 
-      <app-user-informations-container *ngIf="userSelectedIndex !== undefined" [userSelected]="userSelected" [isInEditMode]="isInEditMode">
+      <app-user-informations-container *ngIf="userSelectedIndex !== undefined" [userSelected]="userSelected" [isInEditMode]="isInEditMode" (onFormStatusChanges)="onFormStatusChanges($event)">
 
       </app-user-informations-container>
     

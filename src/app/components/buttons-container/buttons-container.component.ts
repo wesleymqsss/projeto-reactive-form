@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-buttons-container',
@@ -6,8 +6,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './buttons-container.component.html',
   styleUrl: './buttons-container.component.scss'
 })
-export class ButtonsContainerComponent {
+export class ButtonsContainerComponent{
   @Input({ required: true }) isInEditMode: boolean = false;
+  @Input({required: true }) enableSaveButton: boolean = false;
 
   @Output('onEditButton') onEditButtonEmitt = new EventEmitter<void>();
   @Output('onCancelButton') onCancelButtonEmitt = new EventEmitter<void>();
@@ -19,5 +20,5 @@ export class ButtonsContainerComponent {
   onEditButton() {
     this.onEditButtonEmitt.emit();
   }
-
+  
 }

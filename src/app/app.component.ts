@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   userSelected: IUser = {} as IUser;
   title = 'projeto-reactive-forms';
   usersList: UsersListResponse = [];
+  enableSaveButton:  boolean =  false;
 
 
   constructor(
@@ -55,13 +56,17 @@ export class AppComponent implements OnInit {
 
   }
 
+  onFormStatusChanges(formStatus: boolean) {
+    setTimeout(()=>  this.enableSaveButton =  formStatus, 0);
+  }
+
   onUserSelected(userIndex: number) {
     const userFound = this.usersList[userIndex];
 
     if (userFound) {
       this.userSelectedIndex = userIndex;
       this.userSelected = structuredClone(userFound);
-     
+
     }
 
   }
