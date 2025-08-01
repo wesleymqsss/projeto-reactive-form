@@ -1,5 +1,5 @@
 import { inject } from "@angular/core";
-import { Form, FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { IUser } from "../../interfaces/user/user.interface";
 import { PhoneList } from "../../types/phone-list";
 import { AddressList } from "../../types/address-list";
@@ -8,7 +8,6 @@ import { convertPtBrDateToDateObj } from "../../utils/convert-pt-br-date-to-date
 import { preparePhoneList } from "../../utils/prepare-phone-list";
 import { PhoneTypeEnum } from "../../enums/phone-type.enum";
 import { prepareAdrressList } from "../../utils/prepare-address-list";
-import { state } from "@angular/animations";
 import { requiredAddressValidator } from "../../utils/user-form-validators/required-address-validators";
 import { IDependent } from "../../interfaces/user/dependent.interface";
 

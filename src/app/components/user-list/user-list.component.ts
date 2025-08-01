@@ -10,9 +10,12 @@ import { UsersListResponse } from '../../types/users-list-response';
 export class UserListComponent {
   userSelectedIndex: number | undefined;
   @Input({ required: true }) usersList: UsersListResponse = [];
+  @Input({ required: true }) isInEditMode: boolean = false;
   @Output('onUserSelected') userSelectedEmitt =  new EventEmitter<number>();
 
   onUserSelected(i: number) {
+    if(this.isInEditMode) return;
+    
     this.userSelectedIndex = i;
     this.userSelectedEmitt.emit(i);
   }
