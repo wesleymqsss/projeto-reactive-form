@@ -73,6 +73,7 @@ export class GeneralInformationsEditComponent implements OnChanges, OnInit {
   }
 
   private filterStateList(searchTerm: any) {
+    if(!searchTerm) return;
     this.statesListFiltered = this.statesList.filter((state) => state.name.toLowerCase().includes(searchTerm.toLowerCase().trim()));
   }
 }

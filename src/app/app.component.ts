@@ -70,7 +70,8 @@ export class AppComponent implements OnInit {
 
         this.isInEditMode = false;
         this.userFormUpdated = false;
-      })
+      });
+      
     } else {
       this.isInEditMode = false;
     }
