@@ -11,7 +11,7 @@
         [isInEditMode]="isInEditMode">
       </app-buttons-container>
 
-      <app-user-informations-container *ngIf="userSelectedIndex !== undefined" [userSelected]="userSelected" [isInEditMode]="isInEditMode" (onFormStatusChanges)="onFormStatusChanges($event)">
+      <app-user-informations-container *ngIf="userSelectedIndex !== undefined" [userSelected]="userSelected" [isInEditMode]="isInEditMode" (onFormStatusChanges)="onFormStatusChanges($event)" (onUserFormFirstChange)="onUserFormFirstChange()">
 
       </app-user-informations-container>
     

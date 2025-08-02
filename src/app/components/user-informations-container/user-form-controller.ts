@@ -55,17 +55,20 @@ export class UserFormController {
         this.userForm.markAllAsTouched();
 
         this.userForm.updateValueAndValidity();
-        
+
         console.log(this.userForm);
     }
 
 
     removeDependent(index: number) {
         this.dependentsList.removeAt(index);
+        this.dependentsList.markAsDirty();
+
     }
 
     addDependent() {
         this.dependentsList.push(this.createDependentGroup());
+        this.dependentsList.markAsDirty();
     }
 
     private createDependentGroup(dependent: IDependent | null = null){

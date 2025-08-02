@@ -24,6 +24,7 @@ export class UserInformationsContainerComponent extends UserFormController imple
   @Input({ required: true }) userSelected: IUser = {} as IUser;
   @Input({ required: true }) isInEditMode: boolean = false;
   @Output('onFormStatusChanges') onFormStatusChangeEmitt = new EventEmitter<boolean>()
+  @Output('onUserFormFirstChange') onUserFormFirstChangeEmitt = new EventEmitter<void>()
 
   ngOnInit() { 
     this.onUserFormStatusChange();
@@ -37,8 +38,13 @@ export class UserInformationsContainerComponent extends UserFormController imple
 
     if (HAS_USER_SELECTED) {
       this.fulfillUserForm(this.userSelected);
+      this.OnUserFormFirstChange();
       this.getStateList(this.userSelected.country);
     }
+  }
+  
+  private OnUserFormFirstChange() {
+    this.userForm.valueChanges.pipe(take(1)).subscribe(()=> this.onUserFormFirstChangeEmitt.emit())
   }
 
   private onUserFormStatusChange() {
