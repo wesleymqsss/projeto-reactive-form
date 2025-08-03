@@ -73,13 +73,10 @@ export class UserInformationsContainerComponent extends UserFormController imple
   }
 
   private getStateList(country: string) {
-    console.log('===> pais ', country)
     this._statesService.getStates(country).pipe(take(1)).subscribe({
       next: (responseStateList: StateList) => {
         this.statesList = responseStateList;
-        console.log(this.statesList)
       }, error: (err: HttpErrorResponse) => {
-        console.log(err.message);
       }
     })
   }

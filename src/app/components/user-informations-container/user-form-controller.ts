@@ -59,7 +59,6 @@ export class UserFormController {
 
         this.userForm.updateValueAndValidity();
 
-        console.log(this.userForm);
     }
 
     removeDependent(index: number) {
@@ -125,8 +124,6 @@ export class UserFormController {
                 number: [phone.phoneNumber, phoneValidators],
             }));
         })
-
-        console.log('form phoneList', this.phoneList.value)
 
     }
 

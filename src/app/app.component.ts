@@ -109,20 +109,14 @@ export class AppComponent implements OnInit {
   }
 
   private saveUserInfos(){
-    const newUser: IUser =  this.convertUserFormToUser();
+    const newUser: IUser = convertUserFormToUser(this._userFormRawValueService.userFormRawValue);
 
     this._updateUserService.updateUser(newUser).subscribe((newUserResponse: IUser) => {
       if(this.userSelectedIndex === undefined) return;
 
       this.usersList[this.userSelectedIndex] = newUserResponse;
+      this.userSelected = structuredClone(newUserResponse);
     });
   }
 
-  private convertUserFormToUser(): IUser {
-    console.log('======> form populado para formatacao', this._userFormRawValueService.userFormRawValue);
-    
-    console.log('problemao ====> -.-', convertUserFormToUser(this._userFormRawValueService.userFormRawValue))
-    
-    return {} as IUser;
-  }
 }
