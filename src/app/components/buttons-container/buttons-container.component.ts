@@ -7,11 +7,13 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
   styleUrl: './buttons-container.component.scss'
 })
 export class ButtonsContainerComponent{
+
   @Input({ required: true }) isInEditMode: boolean = false;
   @Input({required: true }) enableSaveButton: boolean = false;
 
   @Output('onEditButton') onEditButtonEmitt = new EventEmitter<void>();
   @Output('onCancelButton') onCancelButtonEmitt = new EventEmitter<void>();
+  @Output('onSaveButton') onSaveButtonEmitt = new EventEmitter<void>();
 
   onCancelButton() {
     this.onCancelButtonEmitt.emit();
@@ -21,4 +23,7 @@ export class ButtonsContainerComponent{
     this.onEditButtonEmitt.emit();
   }
   
+  onSaveButton() {
+    this.onSaveButtonEmitt.emit();
+  }
 }

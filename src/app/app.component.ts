@@ -5,6 +5,7 @@ import { take } from 'rxjs';
 import { IUser } from './interfaces/user/user.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { IDialogConfirmationData } from './interfaces/dialog-confirmation-data.interface';
 
 @Component({
   selector: 'app-root',
@@ -58,26 +59,51 @@ export class AppComponent implements OnInit {
 
   onCancelButton() {
     if (this.userFormUpdated) {
-     const dialogRef = this._matDialog.open(ConfirmationDialogComponent, {
-        data: {
-          title: 'O Formulário foi alterado',
-          message: 'Deseja de fato cancelar as alterações feitas no formulário?'
+      this.openConfirmationDialog({
+        title: 'O Formulário foi alterado',
+        message: 'Deseja de fato cancelar as alterações feitas no formulário?'
+      },
+        (value: boolean) => {
+          if (!value) return;
+
+          this.isInEditMode = false;
+          this.userFormUpdated = false;
         }
-      });
-
-      dialogRef.afterClosed().subscribe((value: boolean) => {
-        if(!value) return;
-
-        this.isInEditMode = false;
-        this.userFormUpdated = false;
-      });
-      
+      )
     } else {
       this.isInEditMode = false;
     }
   }
 
+  onSaveButton() {
+    this.openConfirmationDialog(
+      {
+        title: 'Confirmar alteracao de dados',
+        message: 'Deseja de fato salvar os valores alterados?'
+      },
+      (value: boolean) => {
+        if(!value) return;
+
+        this.saveUserInfos()
+        this.isInEditMode = true;
+        this.userFormUpdated =  false;
+      }
+    );
+  }
+
   onEditButton() {
     this.isInEditMode = true;
+  }
+
+  private openConfirmationDialog(data: IDialogConfirmationData, callback: (value: boolean) => void) {
+    const dialogRef = this._matDialog.open(ConfirmationDialogComponent, {
+      data,
+    });
+
+    dialogRef.afterClosed().subscribe(callback);
+  }
+
+  private saveUserInfos(){
+    console.log('valores alterados');
   }
 }
