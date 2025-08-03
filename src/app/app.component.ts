@@ -8,6 +8,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { IDialogConfirmationData } from './interfaces/dialog-confirmation-data.interface';
 import { UpadteUserService } from './services/update-user.service';
 import { UserFormRawValueService } from './services/user-form-raw-value.service';
+import { convertUserFormToUser } from './utils/convert-user-form-to-user';
 
 @Component({
   selector: 'app-root',
@@ -119,6 +120,9 @@ export class AppComponent implements OnInit {
 
   private convertUserFormToUser(): IUser {
     console.log('======> form populado para formatacao', this._userFormRawValueService.userFormRawValue);
+    
+    console.log('problemao ====> -.-', convertUserFormToUser(this._userFormRawValueService.userFormRawValue))
+    
     return {} as IUser;
   }
 }
