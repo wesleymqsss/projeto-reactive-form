@@ -10,18 +10,21 @@ import { PhoneTypeEnum } from "../../enums/phone-type.enum";
 import { prepareAdrressList } from "../../utils/prepare-address-list";
 import { requiredAddressValidator } from "../../utils/user-form-validators/required-address-validators";
 import { IDependent } from "../../interfaces/user/dependent.interface";
+import { UserFormRawValueService } from "../../services/user-form-raw-value.service";
 
 export class UserFormController {
     userForm!: FormGroup;
 
     private emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    private _fb = inject(FormBuilder);
+    private readonly _fb = inject(FormBuilder);
+    private readonly _userFormRawValueService = inject(UserFormRawValueService);
     constructor() {
-        this.createUserForm()
+        this.createUserForm();
+        this.wathUserFormValueChangesAndUpdateService();
     }
 
-    get contactInformations(): FormGroup{
+    get contactInformations(): FormGroup {
         return this.userForm.get('contactInformations') as FormGroup;
     }
 
@@ -59,7 +62,6 @@ export class UserFormController {
         console.log(this.userForm);
     }
 
-
     removeDependent(index: number) {
         this.dependentsList.removeAt(index);
         this.dependentsList.markAsDirty();
@@ -71,8 +73,8 @@ export class UserFormController {
         this.dependentsList.markAsDirty();
     }
 
-    private createDependentGroup(dependent: IDependent | null = null){
-        if(!dependent){
+    private createDependentGroup(dependent: IDependent | null = null) {
+        if (!dependent) {
             this._fb.group({
                 name: ['', Validators.required],
                 age: ['', Validators.required],
@@ -81,9 +83,9 @@ export class UserFormController {
         }
 
         return this._fb.group({
-             name: [dependent?.name, Validators.required],
-                age: [dependent?.age, Validators.required],
-                document: [dependent?.document, Validators.required],
+            name: [dependent?.name, Validators.required],
+            age: [dependent?.age, Validators.required],
+            document: [dependent?.document, Validators.required],
         })
 
     }
@@ -169,5 +171,8 @@ export class UserFormController {
         })
     }
 
-
+    private wathUserFormValueChangesAndUpdateService() {
+        this.userForm.valueChanges.
+            subscribe(()=> this._userFormRawValueService.userFormRawValue = this.userForm.getRawValue());
+    }
 }
