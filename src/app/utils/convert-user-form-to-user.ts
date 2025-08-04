@@ -50,6 +50,7 @@ const convertAddressList = (addressList: IUserFormAddress[]): AddressList => {
         state: address.state,
         city: address.city
     }))
+    .filter((address) => address.city !== '');
 
     return newUserAddressList;
 };
