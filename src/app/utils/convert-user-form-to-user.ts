@@ -36,6 +36,7 @@ const convertPhoneList = (phoneList: IUserFormPhone[]): PhoneList => {
         areaCode: phone.number.substring(2, 4),
         number: formatNumber(phone.number.substring(4)),
     }))
+    .filter((phone) => phone.areaCode !== '');
 
     return newUserPhoneList;
 };
