@@ -4,6 +4,7 @@ import { AddressList } from "../types/address-list";
 import { DependentsList } from "../types/dependents-list";
 import { PhoneList } from "../types/phone-list";
 import { convertDateObjToPtBrDate } from "./convert-date-obj-to-pt-br-date";
+import { formatNumber } from "./format-number";
 
 export const convertUserFormToUser = (userForm: IUserForm): IUser => {
     let newUser: Partial<IUser> = {} as IUser;
@@ -31,9 +32,9 @@ const convertGeneralInformations = (generalInformations: IUserFormGeneralInforma
 const convertPhoneList = (phoneList: IUserFormPhone[]): PhoneList => {
     const newUserPhoneList: PhoneList = phoneList.map((phone) => ({
         type: phone.type,
-        internationalCode: phone.number.substring(0, 2),
+        internationalCode: '+' + phone.number.substring(0, 2),
         areaCode: phone.number.substring(2, 4),
-        number: phone.number.substring(4),
+        number: formatNumber(phone.number.substring(4)),
     }))
 
     return newUserPhoneList;
