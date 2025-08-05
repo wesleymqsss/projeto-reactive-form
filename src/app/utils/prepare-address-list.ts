@@ -39,7 +39,8 @@ const returnAddressToEdit = (address: IAddress | undefined, addressType: number)
        ...address,
     }
 
-  }
+};
+
 const returnAddressToDisplay = (address: IAddress | undefined, addressType: number): IAddressToDisplay => {
     if (!address) {
       return {
@@ -58,4 +59,4 @@ const returnAddressToDisplay = (address: IAddress | undefined, addressType: numb
        ...address,
     }
 
-  }
+};

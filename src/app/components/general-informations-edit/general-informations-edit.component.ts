@@ -50,7 +50,6 @@ export class GeneralInformationsEditComponent implements OnChanges, OnInit {
 
   onCountrySelected(event: MatAutocompleteSelectedEvent) {
     this.onCoutrySelectedEmitt.emit(event.option.value);
-    console.log()
   }
 
   private watchStateFormChangesAndFilter() {

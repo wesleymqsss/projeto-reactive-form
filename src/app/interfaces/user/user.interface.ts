@@ -14,7 +14,7 @@ export interface IUser{
     phoneList: PhoneList;
     addressList: AddressList;
     dependentsList: DependentsList;
-}
+};
 
 
 

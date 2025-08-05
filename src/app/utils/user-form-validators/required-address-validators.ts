@@ -22,7 +22,6 @@ export const requiredAddressValidator: ValidatorFn = (control: AbstractControl):
         }
     }
 
-    console.log('hasAnyText', hasAnyText);
     return null;
 }
 

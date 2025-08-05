@@ -15,7 +15,7 @@ export const convertUserFormToUser = (userForm: IUserForm): IUser => {
     newUser.dependentsList = [... convertDependentList(userForm.dependentsList)];
     
     return newUser as IUser;
-}
+};
 
 const convertGeneralInformations = (generalInformations: IUserFormGeneralInformations): Partial<IUser> => {
     return {
@@ -60,7 +60,7 @@ const convertDependentList = (dependeList: IUserFormDependent[]): DependentsList
         name: dependent.name,
         age: Number(dependent.age),
         document: Number(dependent.document)
-    }))
+    }));
 
     return newUserDependentList
 }
